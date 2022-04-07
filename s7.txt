@@ -1,0 +1,41 @@
+Program 7
+Bluetooth
+//#include <Servo.h>
+//Servo ser_r;
+//Servo ser_l;
+int led=13;
+int data = 0;
+int pos = 0;
+void setup()
+{
+pinMode(led, OUTPUT);
+digitalWrite(led, LOW);
+Serial.begin(9600);
+//ser_r.attach(9);
+//ser_l.attach(10);
+//ser_r.write(pos);
+//ser_l.write(pos);
+}
+void loop()
+{
+if(Serial.available()>0)
+{
+data = Serial.read();
+if(data == 'n')
+{
+digitalWrite(led, LOW);
+//ser_r.write(90);
+//delay(50);
+//ser_r.write(pos);
+Serial.println("LED:OFF");
+}
+else if(data == 'b')
+{
+digitalWrite(led, HIGH);
+//ser_l.write(90);
+//delay(50);
+//ser_l.write(pos);
+Serial.println("LED:ON");
+}
+}
+}
